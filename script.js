@@ -3,7 +3,7 @@
 
 // Helper function to display JavaScript value on HTML page.
 function showResponse(items) {
-	console.log('showResponse fired ');
+	console.log(request);
 	//let responseString = JSON.stringify(response, '', 2);
 	//document.getElementById('response').innerHTML += responseString;
 	//console.log(response);
@@ -33,18 +33,17 @@ function chargeapi() {
 
 function search() {
     // Use the JavaScript client library to create a search.list() API call.
-    var request = gapi.client.youtube.playlistItems.list(
+    var request = gapi.client.youtube.thumbnails.default(
 	    {
-	    	playlistId: 'PLb84-3f0TwkON1MRBUzd_QJw2m_Yzr-09',
-	    	part: 'snippet',
-	    	maxResults: 5
+	    	
 	    }
-    );
+	)
+    }
     
     // Send the request to the API server,
     // and invoke onSearchRepsonse() with the response.
-    request.execute(onSearchResponse);
-}
+  
+
 function onSearchResponse(response) {
 	console.log(response);
 	//condition pour afficher le requete dans html

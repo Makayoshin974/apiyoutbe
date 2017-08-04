@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Ajax-discover</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+	<style type="text/css">
+		div { width: 400px; height: 300px; float: left; margin: 5px; }
+		#premier { background-color: #F6E497; }
+		#troisieme { background-color: #CAF1EC; }
+		#quatrieme { background-color: #F1DBCA; }
+	</style>
+
+	<button id="majPremier">Mise à jour première zone</button>
+	<button id="majDeuxieme">Mise à jour deuxième zone</button><br /><br />
+	<div id="premier">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+	</div>
+
+	<div id="deuxieme">
+		blablabla
+	</div>
+
+	
+	<div id="quatrieme">
+		
+		<button id="charger">Charger et traiter les données</button>
+		<div id="r">Cliquez sur "Charger et traiter les données" pour lancer la lecture et le traitement des données JSON</div>
+
+	</div>
+	<div id="troisieme">
+		
+		<button id="action">Lancer la requête AJAX</button><br /><br />
+		<div id="donnees" style="background-color: yellow"></div><br />
+		<div id="message"></div>
+	</div>
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script>
+		$(function() {
+    $('#majPremier').click(function() { //Lorsque le premier bouton est cliqué, la balise d'identifiant#premier(en d'autres termes, la première balise<div>) est mise à jour avec le contenu du document maj1.html:
+      $('#premier').load('maj1.html #bot', function() {//La function de rappel de la méthodeload()est utilisée pour indiquer la fin de la mise à jour 
+      	// on cible une partie de la page maj1 en lui indiquent l'id (bot) de l'element (div) dont on souhaite recuperer le contenu.
+      	alert('La première zone a été mise à jour');
+      });
+  });
+
+    $('#majDeuxieme').click(function() {
+    	$('#deuxieme').html('<img src="ld.gif">');
+    	$('#deuxieme').load('savemodel.html ', function() {
+    		alert('La deuxième zone a été mise à jour');
+
+    	});
+    });
+    // RECUPERER DES DONNEES AVEC JSON
+    $('#charger').click(function() { //Lorsque le bouton est cliqué, la fonction getJSON() est exécutée pour charger le fichier de données fichier.json :
+    	$.getJSON('fichier.json', function(donnees) {//Le deuxième paramètre de la fonction getJSON() correspond à la fonction de rappel. Cette fonction est exécutée lorsque le fichier de données a été entièrement chargé. Remarquez le mot donnees passé comme paramètre de la fonction de rappel. C'est par son intermédiaire que les données JSON seront accessibles.
+    		$('#r').html('<p><b>Nom</b> : ' + donnees.nom + '</p>');
+    		//Dans un premier temps, la valeur correspondant au nom (donnees.nom) est extraite du fichier de données et placée sous une forme HTML (html()) dans la balise <div>#r. Comme nous passons par la méthode html() pour remplir la balise <div>, il est possible d'utiliser des attributs de mise en forme. Ici, le mot « Nom » est mis en gras avec la balise HTML <b> 
+    		$('#r').append('<p><b>Age</b> : ' + donnees.age + '</p>');
+    		//La donnée age (donnees.age) est alors extraite du fichier de données et placée à la suite du nom, dans un nouveau paragraphe. Ici aussi, le nom du champ est mis en gras en utilisant la balise HTML <b>.
+    		$('#r').append('<p><b>Ville</b> : ' + donnees.ville + '</p>');
+    		$('#r').append('<p><b>Domaine de compétences</b> : ' + donnees.domaine + '</p>');
+    	});
+    });  
+
+
+//EVENEMENTS ASSAOCIES A UNE REQUETE AJAX
+$('#action').click(function() {
+	//Lorsque le bouton #action est cliqué, plusieurs méthodes de gestion événementielle sont mises en place. Par exemple, la méthode ajaxStart() capture l'événement « début d'exécution de la requête » 
+	$(document).ajaxStart(function() {
+		//Lorsque cet événement est déclenché, un texte est affiché dans la balise <div id="message">
+		$('#message').html('Méthode ajaxStart exécutée<br>');
+	});
+	$(document).ajaxSend(function(ev, req, options){
+		$('#message').append('Méthode ajaxSend exécutée, ');
+		$('#message').append('nom du fichier : ' + options.url + '<br>');
+	});
+	$(document).ajaxStop(function(){
+		$('#message').append('Méthode ajaxStop exécutée<br>');
+	});
+	$(document).ajaxSuccess(function(ev, req, options){
+		$('#message').append('Méthode ajaxSuccess exécutée<br>');
+	});
+	$(document).ajaxComplete(function(ev, req, options){
+		$('#message').append('Méthode ajaxComplete exécutée<br>');
+	});
+	$(document).ajaxError(function(ev, req, options, erreur){
+		$('#message').append('Méthode ajaxError exécutée, ');
+		$('#message').append('erreur : ' + erreur + '<br>');
+	});
+	$('#donnees').load('maj1.html');
+});  
+});
+</script>
+
+</body>
+</html>
