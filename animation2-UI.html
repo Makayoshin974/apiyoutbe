@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<meta charset="utf-8">
+	<title>animate-color-jQuery-UI</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- liens pour utiliser les themes jquery UI ci-dessous-->
+	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+</head>
+<body>
+<!-- METHODE ANIMATE()
+ * La methode animate() anime la couleur des éléments !
+ Les propriétés sur lesquelles vous pouvez agir sont les suivantes :
+
+	backgroundColor
+	borderBottomColor
+	borderLeftColor
+	borderRightColor
+	borderTopColor
+	color
+	outlineColor
+
+	La syntaxe de la méthode animate( )ne change pas
+	* $('sel').animate({ prop1: val1, prop2: val2, prop3: val3, etc.}, durée, modèle, function() {
+  				//Une ou plusieurs instructions
+		});
+
+		'sel' est un sélecteur jQuery ;
+		'prop1' ,'prop2' ,'prop'3 sont des propriétés CSS et 'val1' ,'val2' ,'val3' les valeurs associées ;
+		'durée' est la durée de l'animation ;
+		'modèle' est le modèle de progression de l'animation ;
+		function() contient une ou plusieurs instructions qui seront exécutées lorsque l'animation sera terminée.
+
+		Pour illustrer l'animation de couleurs, nous allons modifier progressivement la couleur d'arrière-plan et la couleur du texte dans une balise<div>, tout en combinant ces animations avec une modification de la largeur et de la position horizontale de la balise. -->
+
+		<style>
+
+
+			<style>
+				#contenu 
+				{
+					border: 4px gray solid; 
+					background-color: lime; 
+					color: black; 
+					width: 100px;
+					position: relative;
+				}
+				#contenu h3 
+				{
+					margin: 0; 
+					padding: 0.4em; 
+					text-align: center; 
+					background-color: #777;
+				}
+			</style>
+
+			<div id="contenu">
+				<h3>Cliquez ici</h3>
+				At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+			</div>
+
+
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+			<!-- Pour utiliser la bibliothèque jQuery UI, il vous suffit d'y faire référence avec une balise <script> qui pointe vers le CDN Google (comme ci-dessous-->
+			<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+			integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+			crossorigin="anonymous"></script>
+			<script type="text/javascript">
+
+				$(function() {
+					$('#contenu').dblclick( function() {
+						$( '#contenu').animate({
+							backgroundColor: '#fff',
+							color: 'red',
+							left: '+=200',
+							width: 500
+						}, 1000 );
+					}),
+					$('#contenu').click( function() {
+						$('#contenu').animate({
+							backgroundColor: '#aaeae1',
+							color: 'black',
+							left: '-=200',
+							width: 100
+						}, 1000);
+					}); 
+					 
+				});
+
+			</script>
+		</body>
+		</html>

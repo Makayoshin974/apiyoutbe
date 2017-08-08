@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<meta charset="utf-8">
+	<title>discover-jQueryUI</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+</head>
+<body>
+	<style>
+		img{
+			width: 200px;
+			height: 200px;
+		}
+		#onglet-4{
+			background-color: darkgreen;
+			border-radius: 20px;
+			border:2px dashed red;
+			border-style: outset;
+			text-align: center;
+		}
+	</style>
+
+	<span>Déplacez ou redimensionnez les images  comme vous l'entendez</span><br>
+
+	<img src="img/poisson.jpg" id="dim" >
+	<img src="img/desert.jpg">
+	<img src="img/fleur.jpg">
+	<br>
+	<br>
+	Date <input type="text" id="datepicker">
+	<br>
+	<br>
+	<!--La méthodedialog()permet de créer des boîtes de dialogue de bien meilleur aspect que celles affichées avec la fonction JavaScriptalert(). Voici comment la mettre en œuvre 
+
+	Créez une balise<div>.
+	Définissez le titre de la boîte de dialogue dans son attributtitle.
+	Appliquez la méthode dialog()à la balise<div> -->
+	<div id="dialog" title="Boîte de dialogue de base">
+		Cette boîte de dialogue peut être redimensionnée, déplacée et fermée.Mettre le Fond en Jaune ?
+	</div>
+	<br>
+
+	<div id="accordeon">
+		<h3><a href="#">Titre du bloc 1</a></h3>
+		<div>du contenu dans la div 1</div>
+		<h3><a href="#">Titre du bloc 2</a></h3>
+		<div>Contenu du bloc 2</div>
+		<h3><a href="#">Titre du bloc 3</a></h3>
+		<div>encore du contebu ou des images...</div>
+		<h3><a href="#">Titre du bloc 4</a></h3>
+		<div>Contenu du bloc 4</div>
+		<h3><a href="#">Titre du bloc 5</a></h3>
+		<div>encore et encore des contenus</div>
+
+	</div>
+	<br>
+	<!-- Systeme d'onglet!
+	Pour définir des onglets, vous devez imbriquer plusieurs <div>enfants (une par onglet) dans une <div> parent. L'identifiant et l'intitulé des différents onglets sont définis dans une liste à puces insérée dans la balise <div> parent. Voici la structure HTML à utiliser -->
+
+	<div id="onglets">
+		<ul>
+			<li><a href="#onglet-1">Titre onglet 1</a></li>
+			<li><a href="#onglet-2">Titre onglet 2</a></li>
+			<li><a href="#onglet-3">Titre onglet 3</a></li>
+			<li><a href="#onglet-4">titre onglet 4</a></li>
+		</ul>
+		<div id="onglet-1">
+			<p>contenu 1</p>
+		</div>
+		<div id="onglet-2">
+			<p>contenu 2</p>
+		</div>
+		<div id="onglet-3">
+			<img src="img/desert.jpg">
+			<img src="img/feuille.jpg">
+		</div>
+		<div id="onglet-4" >
+			<h2>Flashy</h2>
+		</div>
+	</div>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!--Dans la suite de ce chapitre, je vais vous montrer comment utiliser les méthodes qui m'ont paru les plus intéressantes dans jQuery UI. Pour utiliser cette bibliothèque, il vous suffit d'y faire référence avec une balise<script>qui pointe vers le CDN Google (comme ci-dessous-->
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+	integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+	crossorigin="anonymous"></script>
+	<script type="text/javascript">
+
+		$(function() {//La méthode draggable()permet à n'importe quel élément du DOM d'être librement déplacé dans la page.
+			//Après avoir fait référence aux bibliothèques jQuery et jQuery UI, il suffit d'une instruction jQuery pour rendre mobiles toutes les balises<img>et<div>
+			$('img').draggable();
+			//La méthoderesizable()permet de redimensionner un objet quelconque. Bien qu'elle soit utilisable sur tous les objets du DOM, vous l'utiliserez surtout pour permettre à l'utilisateur de redimensionner des images. 
+			//$('#dim').resizable();
+			$("#accordeon").accordion();
+			//Imaginez un empilement de balises<div>dont le contenu d'une seule est visible à la fois et vous aurez une idée assez précise de ce que peut produire la méthodeaccordion(). Pour mettre en œuvre cette méthode, commencez par définir une balise<div>conteneur composée de plusieurs balises de titre<h3>associées à des balises<div>dans lesquelles vous placerez le contenu à afficher
+			$.datepicker.regional['fr'] = {// Mais que diriez-vous d'avoir un calendrier français ? Ce serait mieux, non ? Pour cela, vous allez initialiser le tableau$.datepicker.regional['fr']comme ceci
+			closeText: 'Fermer',
+			prevText: 'Précédent',
+			nextText: 'Suivant',
+			currentText: 'Aujourd\'hui',
+			monthNames: ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'],
+			monthNamesShort: ['Janv.','Févr.','Mars','Avril','Mai','Juin','Juil.','Août','Sept.','Oct.','Nov.','Déc.'],
+			dayNames: ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'],
+			dayNamesShort: ['Dim.','Lun.','Mar.','Mer.','Jeu.','Ven.','Sam.'],
+			dayNamesMin: ['D','L','M','M','J','V','S'],
+			weekHeader: 'Sem.',
+			dateFormat: 'dd/mm/yy',
+			firstDay: 1,
+			isRTL: false,
+			showMonthAfterYear: false,
+			yearSuffix: ''
+		};
+				// Puis indiquer que vous voulez utiliser ces données dans la méthodedatepicker()
+				$.datepicker.setDefaults($.datepicker.regional['fr']);
+				$( "#datepicker").datepicker();
+			// La méthodedatepicker()transforme une simple zone de texte<input type="text">en un calendrier dans lequel l'utilisateur peut choisir une date. La date choisie est alors copiée dans la zone de texte. Pour utiliser cette méthode, il suffit de l'appliquer à une zone de texte quelconque, après avoir fait référence à un thème
+			$('#dialog').dialog();
+			//L'instruction precedente crée une instance de la boîte de dialogue et l'ouvre
+			//--------------------------------------------------------.
+			// Supposons maintenant que vous vouliez créer une boîte de dialogue modale comportant deux boutons (OuietNon) et positionnée en (100, 100). Voici le code à utiliser 
+
+			$( "#dialog" ).dialog({
+				modal: true,
+				buttons: { 
+					"Oui": function() { // Lorsque l'utilisateur clique sur le boutonOui, l'arrière-plan de la page devient jaune, puis la boîte de dialogue se ferme.
+					$('body').css('background', 'yellow');
+					$( this ).dialog( "close" );
+				},
+					"Non": function() { // Lorsqu'il clique sur le boutonNon, l'arrière-plan reste inchangé et la boîte de dialogue se ferme. Ce qu'il faut surtout retenir, c'est que vous pouvez définir des fonctions.
+					$( this ).dialog( "close" );
+				}
+			}
+		});
+			// on applique la methode tabs() a la div parent avec un id 'onglets'
+			$('#onglets').tabs();
+
+		});
+
+	</script>
+
+</body>
+</html>

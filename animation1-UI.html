@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<meta charset="utf-8">
+	<title>discover-jQueryUI</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- liens pour utiliser les themes jquery UI ci-dessous-->
+	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+</head>
+<!--  METHODES show(),hide()et toggle()
+	* la méthode show() anime un élément en le faisant apparaître
+	* la méthode hide() anime un élément en le faisant disparaître
+	*  la méthode toggle() anime un élément en le faisant apparaître ou disparaître, en fonction de l'état de l'élément lorsqu'elle est exécutée
+
+	Voici la syntaxe à utiliser :
+	-+ show(effet, options, vitesse, retour);
+	-+ hide(effet, options, vitesse, retour);
+	-+ toggle(effet, options, vitesse, retour);
+
+	'effet' est l'un des effets suivants :'blind,clip,drop,explode,fold,puff,slide,scale,size et pulsate'.
+	'options' représente les options à appliquer à l'effet. Ce paramètre est optionnel.
+	'vitesse' est la vitesse d'exécution de l'effet :'slow','normal'(valeur par défaut équivalente à 400 ms), 'fast' ou un nombre qui représente une durée en millisecondes. Ce paramètre est optionnel.
+	'retour' est une fonction de retour, exécutée lorsque l'effet est terminé. Ce paramètre est optionnel.
+
+
+-->
+
+<body>
+	<style type="text/css">
+		div
+
+		{ margin: auto;
+			width: 300px; 
+			height: 280px; 
+			border: 1px gray solid; 
+			background-color: #aaeae1;
+			display: none;
+		}
+		
+		#contenu h3 
+		{ 
+			margin: 0; 
+			padding: 0.4em; 
+			text-align: center; 
+			background-color: #777;
+		}
+		img{
+			width: 280px;
+			height: 180px;
+		}
+	</style>
+
+	<div id="contenu" style="width: 400px;">
+		<h3>Un titre</h3>
+		At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos 
+		<img  src="img/fleur.jpg">
+	</div>
+	<div id="lefet">
+		<u>
+			<li>liste 1</li>
+			<li><a href="#"> liste 2</a></li>
+			<li>liste 3</li>
+		</u>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Pour utiliser la bibliothèque jQuery UI, il vous suffit d'y faire référence avec une balise <script> qui pointe vers le CDN Google (comme ci-dessous-->
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+	integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+	crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$(function() {
+	// Voici un exemple pratique d'utilisation de la méthode jQuery UI show() avec l'effet explode.
+
+	$('#contenu').show('explode',1000);
+			// au chargement de la page,la div contenu est caché par un display none.le code jQuery applique l'effet explode a la div via la methode show d'apparition et elle s'affiche par fragment
+			//$('#contenu').hide('size',1000);
+			// une fois la methode show appliqué,on cache la div de la meme facon grace a la methode hide.Dans les 2 cas ,la transition dure 1s(1000)
+			$('#lefet').effect('slide',1000);
+			// Pour appliquer un effet à un élément sans le faire apparaître ou disparaître, passez par la méthodeeffect(), en utilisant la même syntaxe que pour les méthodes show(), hide() et toggle().
+		});
+	</script>
+
+</body>
+</html>
