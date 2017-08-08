@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>decouvrir les plugins jquery</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="Stylesheet" type="text/css" href="src/wColorPicker.min.css" />
+</head>
+<body>
+<!-- on  charge un plugin garce au link et au script wColorPiker 
+Cela nous permet en quelques ligne de faire les actions suivantes --> 
+	<div id="wcp1">
+		<input id="wcp-input" type="text"/><br />
+	</div>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="src/wColorPicker.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$("#wcp1").wColorPicker({
+				onSelect: function(color){//Quand l'utilisateur clique sur une des couleurs du nuancier, la couleur d'arrière-plan de la page est mise à jour en conséquence
+					$('body').css('background', color);
+				},// la couleur d'arrière-plan de la zone de texte#wcp-inputest modifiée lorsque la souris se trouve au-dessus d'une des couleurs du nuancier et la couleur correspondante est affichée dans la zone de texte 
+				initColor: '#ccf',
+				onMouseover: function(color){
+					$('#wcp-input').css('background', color).val(color);
+				}
+			});
+		});		
+	</script>
+</body>
+</html>

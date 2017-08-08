@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>carte gmap api google</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
+</head>
+<body>
+	<!-- on utilise le plugin gMap qui interface le systeme de cartographie google map-->
+	<div id="map1" style="width: 100%; height: 600px; border: 1px solid #777; overflow: scroll;"></div>
+	<!-- Pour accéder à toute la puissance de Google Maps, utilisez trois balises<script>pour faire référence à la bibliothèque jQuery, à l'API de Google Maps et au pluginjquery.gmap.min.js-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=AIzaSyAG8sEcOGR52Mng-muBG63QAXDijYqVEGM&amp;hl=fr"></script>
+	<script type="text/javascript" src="src/jquery.gmap.min.js"></script>
+	<script type="text/javascript">
+		
+		$(function() {//Pour afficher la carte du monde dans la balise<div id="map1">, il vous suffit de lui appliquer la méthodegMap()dès que le DOM est disponible
+			$("#map1").gMap({ markers: [{ //voici un exemple concret d'utilisation. Nous allons afficher une carte centrée sur la ville d'Albi, située aux coordonnées (43.92, 2.14). Le texte « Albi » sera affiché dans une bulle, le facteur de zoom sera égal à 10 et la carte sera de type « vue en relief ».
+				latitude: 43.92,
+				longitude: 2.14,
+				html: "Albi",
+				popup: true }],
+				maptype: 'TERRAIN',
+				zoom: 11});
+		}); 
+
+	</script>
+</body>
+</html>
