@@ -69,7 +69,7 @@
 			<script type="text/javascript">
 
 				$(function() {
-					$('#contenu').dblclick( function() {
+					$('#contenu').click( function() {
 						$( '#contenu').animate({
 							backgroundColor: '#fff',
 							color: 'red',
@@ -77,17 +77,18 @@
 							width: 500
 						}, 1000 );
 					}),
-					$('#contenu').click( function() {
+					$('#contenu').mouseleave( function() {
 						$('#contenu').animate({
 							backgroundColor: '#aaeae1',
 							color: 'black',
 							left: '-=200',
-							width: 100
+							width: 200
 						}, 1000);
 					}); 
 					 
 				});
 
+				
 			</script>
 		</body>
 		</html>

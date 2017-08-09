@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<meta charset="utf-8">
 	<title>discover-jQueryUI</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
 	<!-- liens pour utiliser les themes jquery UI ci-dessous-->
 	<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
 </head>
@@ -53,7 +53,7 @@
 	</style>
 
 	<div id="contenu" style="width: 400px;">
-		<h3>Un titre</h3>
+		<h3 >Un titre</h3>
 		At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos 
 		<img  src="img/fleur.jpg">
 	</div>
@@ -64,6 +64,7 @@
 			<li>liste 3</li>
 		</u>
 	</div>
+	<a href="#" title="des Bubules" id="lien" >infobubu</a> 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<!-- Pour utiliser la bibliothèque jQuery UI, il vous suffit d'y faire référence avec une balise <script> qui pointe vers le CDN Google (comme ci-dessous-->
@@ -80,6 +81,12 @@
 			// une fois la methode show appliqué,on cache la div de la meme facon grace a la methode hide.Dans les 2 cas ,la transition dure 1s(1000)
 			$('#lefet').effect('slide',1000);
 			// Pour appliquer un effet à un élément sans le faire apparaître ou disparaître, passez par la méthodeeffect(), en utilisant la même syntaxe que pour les méthodes show(), hide() et toggle().
+			$('#lien').tooltip({
+				position: { my: "left+15 center", at: "right center" },
+				show: { effect: "blind", duration: 800 },
+
+				
+			});
 		});
 	</script>
 

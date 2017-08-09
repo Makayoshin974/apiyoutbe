@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>modele-d'animation-jQuery-ui</title>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<!-- Avec jQuery, vous n'avez accès qu'à deux modèles de progression pour vos animations :swing et linear.
+ La bibliothèque jQuery UI propose un bien plus grand nombre de modèles de progression
+Après avoir fait référence à la bibliothèque jQuery UI, vous pouvez les utiliser dans toutes les méthodes d'animation : show() , hide(), fadeIn(), fadeOut(), fadeTo(), slideUp(), slideDown() et animate()
+VOICI un exemple de modele de progression sur une image -->
+
+<body>
+	<button id="easeOutElastic">--}</button>
+	<button id="easeInOutBack">Effet easeInOutBack</button><br />
+	<img  class="img1" src="img/hs.jpg" style="position: relative;">
+	<br>
+	<img class="img2" src="img/hs.jpg" style="position: relative;">
+
+
+	<script>
+		$(function() {
+			$('img').draggable();
+
+			$('#easeOutElastic').click( function() {
+				// pour que a chaque execution,l'img revienne a gauche:
+				//$('img').css('left','0px'); 
+				$('.img1').animate({ left: '+=400'},2000, 'linear' );
+				$('.img2').animate({ left: '+=400', top:'+=100'}, 2000, 'easeInOutQuint');
+			});  
+			$('#easeInOutBack').click( function() {
+				$('img').css('left','0px');
+				$('img').animate({ left: '+=200'}, 700, 'swing');
+			});  
+		});
+	</script>
+</body>
+</html>
